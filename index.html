@@ -358,6 +358,19 @@ menuToggle.addEventListener("click", () => {
     navList.classList.toggle("active");
 });
     </script>
-
+<script>
+  function setCarouselHeight() {
+    const header = document.querySelector('header');
+    const headerH = header ? header.getBoundingClientRect().height : 0;
+    const h = window.innerHeight - headerH;
+    document.querySelectorAll('.carouselTheBand').forEach(el => {
+      el.style.height = h + 'px';
+    });
+  }
+  window.addEventListener('load', setCarouselHeight);
+  window.addEventListener('resize', setCarouselHeight);
+  // optional: recalc after orientation change
+  window.addEventListener('orientationchange', () => setTimeout(setCarouselHeight, 200));
+</script>
 </body>
 </html>
