@@ -222,11 +222,20 @@ header {
     width: 100%;
 }
 
-.carouselTheBand .carousel-item img {
+.carouselTheBand .carousel-item {
     height: 100%;
-    min-width: 100%;
-    object-fit: cover;       /* ảnh fill và crop */
-    object-position: top;    /* crop từ trên */
+    width: 100%;
+    overflow: hidden;
+}
+
+.carouselTheBand .carousel-item img {
+    /* Ensure the <img> fills the carousel and object-fit can crop it */
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-width: none;
+    object-fit: cover;       /* fill and crop */
+    object-position: top;    /* crop from top */
 }
 
 .carousel-caption {
