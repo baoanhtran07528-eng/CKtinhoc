@@ -209,24 +209,29 @@ header {
 /* ==========================
    CAROUSEL
 ========================== */
+:root { --site-header-height: 60px; }
 .carouselTheBand {
   width: 100vw !important;
   height: calc(100vh - var(--site-header-height)) !important;
-  min-height: 380px !important;
+  min-height: 420px !important;
   max-height: none !important;
   overflow: hidden !important;
   position: relative !important;
 }
-
 .carouselTheBand .carousel-item {
     height: 100%;
     width: 100%;
     overflow: hidden;
 }
-.carouselTheBand .carousel-item,
-.carouselTheBand .carousel-inner {
+.carouselTheBand .carousel-inner,
+.carouselTheBand .carousel-item {
   height: 100% !important;
   width: 100% !important;
+  display: block !important;
+  position: relative !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
 }
 .carouselTheBand .carousel-item img,
 .carouselTheBand img.w3-image,
@@ -241,13 +246,12 @@ header {
 }
 
 .carouselTheBand .carousel-item img {
-    /* Ensure the <img> fills the carousel and object-fit can crop it */
-    width: 100%;
-    height: 100%;
-    display: block;
-    max-width: none;
-    object-fit: cover;       /* fill and crop */
-    object-position: top;    /* crop from top */
+  opacity: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  position: absolute !important;
+  left: -9999px !important;
+  pointer-events: none !important;
 }
 
 /* Stronger, high-specificity fallback to override framework rules
@@ -271,7 +275,10 @@ header {
     max-height: none !important;
     display: block !important;
 }
-
+.carouselTheBand .carousel-caption {
+  position: absolute !important;
+  z-index: 3 !important;
+}
 .carousel-caption {
     position: absolute;
     bottom: 15% !important; /* đưa caption lên cao */
@@ -370,6 +377,12 @@ header {
     height: 100%;
     object-fit: cover;
   }
+  /* fallback: if JS disabled, keep object-fit rules */
+.carouselTheBand .carousel-item img.object-fit-fallback {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
 }
 
 /* ==========================
