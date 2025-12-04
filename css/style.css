@@ -220,11 +220,6 @@ header {
 .carouselTheBand .carousel-item {
     height: 100%;
     width: 100%;
-}
-
-.carouselTheBand .carousel-item {
-    height: 100%;
-    width: 100%;
     overflow: hidden;
 }
 
@@ -236,6 +231,28 @@ header {
     max-width: none;
     object-fit: cover;       /* fill and crop */
     object-position: top;    /* crop from top */
+}
+
+/* Stronger, high-specificity fallback to override framework rules
+   (e.g. bootstrap .img-fluid or other max-width limits). This forces
+   the image to fill the carousel area and be cropped by object-fit. */
+.carouselTheBand .carousel-item > img,
+.carouselTheBand img {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+}
+
+/* Override W3.CSS .w3-image class which may add max-width or height: auto */
+.carouselTheBand .carousel-item img.w3-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: block !important;
 }
 
 .carousel-caption {
@@ -274,7 +291,7 @@ header {
 /* Tablets & medium screens */
 @media (max-width: 992px) {
     .carouselTheBand {
-        height: 100vh !important; /* giảm chiều cao */
+        height: 100vh !important; 
     }
     .carousel-caption h5 {
         font-size: 2rem;
