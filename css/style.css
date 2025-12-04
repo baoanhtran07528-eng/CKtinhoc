@@ -144,6 +144,10 @@ header {
     cursor: pointer;
     color: #333;
 }
+.menu_toggle i,
+.header_search i {
+    color: white;
+}
 
 @media (max-width: 768px) {
     header {
