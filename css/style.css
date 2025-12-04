@@ -210,17 +210,34 @@ header {
    CAROUSEL
 ========================== */
 .carouselTheBand {
-    margin-top: 60px; /* trừ header */
-    width: 100vw;     /* full chiều rộng màn hình */
-    height: 700px;    /* chiều cao cố định mặc định */
-    overflow: hidden;
-    position: relative;
+  width: 100vw !important;
+  height: calc(100vh - var(--site-header-height)) !important;
+  min-height: 380px !important;
+  max-height: none !important;
+  overflow: hidden !important;
+  position: relative !important;
 }
 
 .carouselTheBand .carousel-item {
     height: 100%;
     width: 100%;
     overflow: hidden;
+}
+.carouselTheBand .carousel-item,
+.carouselTheBand .carousel-inner {
+  height: 100% !important;
+  width: 100% !important;
+}
+.carouselTheBand .carousel-item img,
+.carouselTheBand img.w3-image,
+.carouselTheBand img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
 }
 
 .carouselTheBand .carousel-item img {
@@ -303,13 +320,11 @@ header {
 
 /* Mobile screens */
 @media (max-width: 768px) {
-    .carouselTheBand {
-        /* Make carousel taller on mobile so it appears longer
-           Use a large viewport-based height but provide limits to avoid extreme overflow */
-        height: 120vh;
-        min-height: 600px;
-        max-height: 1400px;
-    }
+  .carouselTheBand {
+    height: calc(100vh - var(--site-header-height)) !important;
+    min-height: 480px !important;
+  }
+}
     .carousel-caption {
         bottom: 40% !important; /* điều chỉnh vị trí caption */
     }
@@ -327,7 +342,6 @@ header {
     height: 100%;
     object-fit: cover;
   }
-}
 
 /* Small mobile screens */
 @media (max-width: 480px) {
