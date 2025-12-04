@@ -278,7 +278,11 @@ header {
 /* Mobile screens */
 @media (max-width: 768px) {
     .carouselTheBand {
-        height: 100vh;        /* full phone screen height */
+        /* Make carousel taller on mobile so it appears longer
+           Use a large viewport-based height but provide limits to avoid extreme overflow */
+        height: 120vh;
+        min-height: 600px;
+        max-height: 1400px;
     }
     .carousel-caption {
         bottom: 40% !important; /* điều chỉnh vị trí caption */
@@ -294,7 +298,10 @@ header {
 /* Small mobile screens */
 @media (max-width: 480px) {
     .carouselTheBand {
-        height: 400px;
+        /* Taller carousel on small phones as well */
+        height: 120vh;
+        min-height: 480px;
+        max-height: 1000px;
     }
     .carousel-caption {
         bottom: 35% !important;
@@ -698,7 +705,11 @@ header {
         gap: 20px;
     }
     .carouselTheBand {
-        height: 500px;
+        /* Keep consistent taller mobile size (matches earlier mobile rules)
+           and prevent this later block from overriding with a small value */
+        height: 120vh;
+        min-height: 600px;
+        max-height: 1400px;
     }
 }
 
