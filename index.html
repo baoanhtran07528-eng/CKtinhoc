@@ -49,8 +49,8 @@
 
     <!-- HEADER -->
     <header>
+    <span class="menu_toggle"><i class="fa fa-bars"></i></span>
     <div class="navbar_area">
-        <span class="menu_toggle"><i class="fa fa-bars"></i></span>
         <ul class="nav_list">
             <li><a href="#home">Home</a></li>
             <li><a href="#band">Introduction</a></li>
@@ -351,6 +351,12 @@ document.querySelectorAll('.tour_card .buy_btn').forEach(button => {
         openPopup("Thank You!", "", "Thank you for contacting us. We will get back to you soon.", false);
         this.reset(); // clear the form
       });
+      const menuToggle = document.querySelector(".menu_toggle");
+const navList = document.querySelector(".nav_list");
+
+menuToggle.addEventListener("click", () => {
+    navList.classList.toggle("active");
+});
     </script>
 
 </body>
