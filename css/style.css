@@ -247,7 +247,8 @@ header {
 /* Mobile screens */
 @media (max-width: 768px) {
     .carouselTheBand {
-        height: 500px;
+        height: 100vh;        /* full phone screen height */
+        max-height: 900px;    /* optional safety limit */
     }
     .carousel-caption {
         bottom: 40% !important; /* điều chỉnh vị trí caption */
