@@ -146,31 +146,58 @@ header {
 }
 
 @media (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        padding: 8px 15px;
+        height: auto;
+    }
     .menu_toggle {
         display: block;
+        font-size: 1.5rem;
+        order: 2;
+    }
+    .navbar_area {
+        order: 3;
+        width: 100%;
     }
     .navbar_area ul {
         flex-direction: column;
         width: 100%;
         display: none;
-        margin-top: 10px;
+        margin-top: 8px;
+        gap: 0;
     }
     .navbar_area ul.active {
         display: flex;
     }
+    .navbar_area ul li a {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
     .header_search {
-        margin: 10px auto 0 auto;
+        order: 1;
+        margin-left: auto;
+        margin-bottom: 0;
+    }
+    .header_search i {
+        font-size: 1.2rem;
     }
 }
 
 /* Small mobile screens */
 @media (max-width: 480px) {
+    header {
+        padding: 6px 10px;
+    }
+    .menu_toggle {
+        font-size: 1.3rem;
+    }
     .navbar_area ul li a {
-        padding: 8px 10px;
-        font-size: 0.9rem;
+        padding: 6px 8px;
+        font-size: 0.75rem;
     }
     .header_search i {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 }
 
