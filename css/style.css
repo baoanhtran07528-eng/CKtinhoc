@@ -209,29 +209,24 @@ header {
 /* ==========================
    CAROUSEL
 ========================== */
-:root { --site-header-height: 60px; }
 .carouselTheBand {
   width: 100vw !important;
   height: calc(100vh - var(--site-header-height)) !important;
-  min-height: 420px !important;
+  min-height: 380px !important;
   max-height: none !important;
   overflow: hidden !important;
   position: relative !important;
 }
+
 .carouselTheBand .carousel-item {
     height: 100%;
     width: 100%;
     overflow: hidden;
 }
-.carouselTheBand .carousel-inner,
-.carouselTheBand .carousel-item {
+.carouselTheBand .carousel-item,
+.carouselTheBand .carousel-inner {
   height: 100% !important;
   width: 100% !important;
-  display: block !important;
-  position: relative !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-  background-position: center center !important;
 }
 .carouselTheBand .carousel-item img,
 .carouselTheBand img.w3-image,
@@ -245,46 +240,14 @@ header {
   display: block !important;
 }
 
-.carouselTheBand .carousel-item img {
-  opacity: 0 !important;
-  width: 1px !important;
-  height: 1px !important;
-  position: absolute !important;
-  left: -9999px !important;
-  pointer-events: none !important;
-}
 
-/* Stronger, high-specificity fallback to override framework rules
-   (e.g. bootstrap .img-fluid or other max-width limits). This forces
-   the image to fill the carousel area and be cropped by object-fit. */
-.carouselTheBand .carousel-item > img,
-.carouselTheBand img {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
-    display: block !important;
-    object-fit: cover !important;
-    object-position: top center !important;
-}
 
-/* Override W3.CSS .w3-image class which may add max-width or height: auto */
-.carouselTheBand .carousel-item img.w3-image {
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
-    max-height: none !important;
-    display: block !important;
-}
-.carouselTheBand .carousel-caption {
-  position: absolute !important;
-  z-index: 3 !important;
-}
 .carousel-caption {
     position: absolute;
-    bottom: 15% !important; /* đưa caption lên cao */
+    bottom: 35% !important; /* đưa caption lên cao */
     top: auto !important;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(230%);
     text-align: center;
     color: #fff;
     z-index: 2;
@@ -377,12 +340,6 @@ header {
     height: 100%;
     object-fit: cover;
   }
-  /* fallback: if JS disabled, keep object-fit rules */
-.carouselTheBand .carousel-item img.object-fit-fallback {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-}
 }
 
 /* ==========================
@@ -1369,7 +1326,7 @@ header {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .extras-modal .w3-modal-content {
-        max-height: 85vh;
+        max-height: 80vh;
     }
     .extras-modal img,
     .extras-modal video {
