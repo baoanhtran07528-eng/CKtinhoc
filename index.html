@@ -359,55 +359,18 @@ menuToggle.addEventListener("click", () => {
 });
     </script>
 <script>
-/* Convert carousel <img> -> background-image on .carousel-item (keeps <img> for a11y, but hides it) */
-(function() {
-  function applyBgImages() {
-    document.querySelectorAll('.carouselTheBand .carousel-item').forEach(function(item) {
-      // find the first img inside the item
-      var img = item.querySelector('img');
-      if (!img) return;
-
-      // use the image's src (or data-src) as background
-      var src = img.getAttribute('src') || img.getAttribute('data-src') || '';
-      if (src) {
-        item.style.backgroundImage = 'url("' + src + '")';
-        item.style.backgroundSize = 'cover';
-        item.style.backgroundPosition = 'center center';
-        // keep the image for accessibility but hide visually
-        img.classList.add('visually-hidden-js');
-      }
-    });
-  }
-
-  // compute correct carousel height accounting for header and mobile URL bars
   function setCarouselHeight() {
-    var header = document.querySelector('header');
-    var headerH = header ? header.getBoundingClientRect().height : 0;
-    // innerHeight is better than 100vh for mobile dynamic address bar
-    var h = Math.max(window.innerHeight - headerH, 320);
-    document.querySelectorAll('.carouselTheBand').forEach(function(el) {
+    const header = document.querySelector('header');
+    const headerH = header ? header.getBoundingClientRect().height : 0;
+    const h = window.innerHeight - headerH;
+    document.querySelectorAll('.carouselTheBand').forEach(el => {
       el.style.height = h + 'px';
     });
   }
-
-  // small helper to run after images load in case sizes change
-  window.addEventListener('load', function(){
-    applyBgImages();
-    setCarouselHeight();
-    // run again shortly to catch mobile browser chrome changes
-    setTimeout(setCarouselHeight, 300);
-  });
-
-  window.addEventListener('resize', function(){
-    setCarouselHeight();
-  });
-
-  window.addEventListener('orientationchange', function(){
-    setTimeout(setCarouselHeight, 250);
-  });
-
-})();
+  window.addEventListener('load', setCarouselHeight);
+  window.addEventListener('resize', setCarouselHeight);
+  // optional: recalc after orientation change
+  window.addEventListener('orientationchange', () => setTimeout(setCarouselHeight, 200));
 </script>
-
 </body>
 </html>
