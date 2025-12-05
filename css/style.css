@@ -210,12 +210,11 @@ header {
    CAROUSEL
 ========================== */
 .carouselTheBand {
-  width: 100vw !important;
-  height: calc(100vh - var(--site-header-height)) !important;
-  min-height: 380px !important;
-  max-height: none !important;
-  overflow: hidden !important;
-  position: relative !important;
+    margin-top: 60px; /* trừ header */
+    width: 100vw;     /* full chiều rộng màn hình */
+    height: 700px;    /* chiều cao cố định mặc định */
+    overflow: hidden;
+    position: relative;
 }
 
 .carouselTheBand .carousel-item {
@@ -223,31 +222,45 @@ header {
     width: 100%;
     overflow: hidden;
 }
-.carouselTheBand .carousel-item,
-.carouselTheBand .carousel-inner {
-  height: 100% !important;
-  width: 100% !important;
+
+.carouselTheBand .carousel-item img {
+    /* Ensure the <img> fills the carousel and object-fit can crop it */
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-width: none;
+    object-fit: cover;       /* fill and crop */
+    object-position: top;    /* crop from top */
 }
-.carouselTheBand .carousel-item img,
-.carouselTheBand img.w3-image,
+
+/* Stronger, high-specificity fallback to override framework rules
+   (e.g. bootstrap .img-fluid or other max-width limits). This forces
+   the image to fill the carousel area and be cropped by object-fit. */
+.carouselTheBand .carousel-item > img,
 .carouselTheBand img {
-  width: 100% !important;
-  height: 100% !important;
-  max-width: none !important;
-  max-height: none !important;
-  object-fit: cover !important;
-  object-position: center center !important;
-  display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    display: block !important;
+    object-fit: cover !important;
+    object-position: top center !important;
 }
 
-
+/* Override W3.CSS .w3-image class which may add max-width or height: auto */
+.carouselTheBand .carousel-item img.w3-image {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    display: block !important;
+}
 
 .carousel-caption {
     position: absolute;
-    bottom: 35% !important; /* đưa caption lên cao */
+    bottom: 15% !important; /* đưa caption lên cao */
     top: auto !important;
     left: 50%;
-    transform: translateX(-50%) translateY(230%);
+    transform: translateX(-50%);
     text-align: center;
     color: #fff;
     z-index: 2;
@@ -290,11 +303,13 @@ header {
 
 /* Mobile screens */
 @media (max-width: 768px) {
-  .carouselTheBand {
-    height: calc(100vh - var(--site-header-height)) !important;
-    min-height: 480px !important;
-  }
-}
+    .carouselTheBand {
+        /* Make carousel taller on mobile so it appears longer
+           Use a large viewport-based height but provide limits to avoid extreme overflow */
+        height: 120vh;
+        min-height: 600px;
+        max-height: 1400px;
+    }
     .carousel-caption {
         bottom: 40% !important; /* điều chỉnh vị trí caption */
     }
@@ -304,14 +319,7 @@ header {
     .carousel-caption p {
         font-size: 0.9rem;
     }
-    .carousel-item {
-    height: 60vh;
-  }
-
-  .carousel-item img {
-    height: 100%;
-    object-fit: cover;
-  }
+}
 
 /* Small mobile screens */
 @media (max-width: 480px) {
@@ -332,14 +340,6 @@ header {
     .carousel-caption p {
         font-size: 0.8rem;
     }
-    .carousel-item {
-    height: 60vh;
-  }
-
-  .carousel-item img {
-    height: 100%;
-    object-fit: cover;
-  }
 }
 
 /* ==========================
@@ -1326,7 +1326,7 @@ header {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .extras-modal .w3-modal-content {
-        max-height: 80vh;
+        max-height: 85vh;
     }
     .extras-modal img,
     .extras-modal video {
